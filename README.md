@@ -5,7 +5,7 @@ A bioinformatics pipeline to process low depth re-sequencing data and produce SN
 
 	1. clone repository
 
-	2. place data into the /data/ folder 
+	2. place data paired read data into the /data/ folder 
 		- your genome (.fna suffix) and paired fq files
 		- alternatively change the path in the /scripts/ files to interact with data in another location
 
