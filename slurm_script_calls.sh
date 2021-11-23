@@ -15,7 +15,7 @@ echo "This will involve a human in the loop."
 
 #[] 1. clean fq files
 ## Arguments to alter in this script:
-## 		- file_path : location where the input data is found
+##      - file_path : location where the input data is found
 ##      - cores     : number of cpus for parallelization
 ## input: paired fastq files with suffix R1.fastq.gz and R2.fastq.gz
 ## output: fastq files with the suffix _trim.fastq.gz
@@ -28,7 +28,7 @@ sbatch 01_run_cutadapt.sh
 #[] 2. alignment to genome 
 ## Arguments to alter in this script:
 ##      - file_path   : location where the input data is found
-## 		- genome_file : path to the reference genome .fasta to align data to
+##      - genome_file : path to the reference genome .fasta to align data to
 ##      - outfolder   : location where the outputs should be saved to
 ##      - cores     : number of cpus for parallelization
 fastq files with the suffix _trim.fastq.gz
@@ -41,7 +41,7 @@ sbatch 02_align_to_genome.sh
 
 #[] 3. deduplicate bam files
 ## Arguments to alter in this script:
-## 		- file_path   : location where the input data is found
+##         - file_path   : location where the input data is found
 ## input  : .sorted.bam files from step 2
 ## output : deduplicated .bam file with suffix deDup.bam and accompanying 
 ##          metrics file with suffix deDupMetrics.txt.
@@ -54,13 +54,13 @@ sbatch 03_deduplicate_and_cleanup.sh
 #[] 4. housekeeping
 ## Arguments to alter in this script:
 ##      - file_path       : location where the input data is found
-## 		- genome_file     : path to the reference genome .fasta to align data to
+##      - genome_file     : path to the reference genome .fasta to align data to
 ##      - read_group_name : read group identifier added to header
 ##      - cores           : number of cpus for parallelization
 ## input  : A reference genome and deduplicated .bam file with suffix .deDup.bam (from step 3)
 ## output : A reference sequence dictionary (in same folder as reference genome)
 ##          bam index .bai files (in same folder as input .deDup.bam files)
-##			bam files with suffix RG.deDup.bam (read_group added to header)
+##            bam files with suffix RG.deDup.bam (read_group added to header)
 ## software used : picard, samtools
 echo "bam file cleanup, alter the header information and index files. make genome dictonary"
 sbatch 04_genome_dict_and_header_fix.sh
@@ -69,7 +69,7 @@ sbatch 04_genome_dict_and_header_fix.sh
 #[] 5. indel realignment
 ## Arguments to alter in this script:
 ##      - file_path       : location where the input data is found
-## 		- genome_file     : path to the reference genome .fasta (with accompanying dictionary) to align data to
+##      - genome_file     : path to the reference genome .fasta (with accompanying dictionary) to align data to
 ##      - cores           : number of cpus for parallelization
 ## input  : bam files with suffix RG.deDup.bam and indexed genome file
 ## output : bam files with the suffix .realigned.bam (include realigned sequences)
@@ -83,9 +83,9 @@ sbatch 05_indel_realignment.sh
 #[] 6. SNP and genotype likelihood calling (chromosome-by-chromosome)
 ## Arguments to alter in this script:
 ##      - file_path        : location where the input data is found
-## 		- bam_names_file   : A list of .bam files to be considered
-##							   Optionally produced for you from contents of file_path
-##	    - chr_names_file   : A list of chromosome names to call snps for (select these from you genome_file)
+##      - bam_names_file   : A list of .bam files to be considered
+##                           Optionally produced for you from contents of file_path
+##      - chr_names_file   : A list of chromosome names to call snps for (select these from you genome_file)
 ##      - output_prefix    : prefix to add to the outputs (format will be: "<output_prefix><chromosome>")
 ##      - cores            : number of cpus for parallelization
 ## input  : see arguments
@@ -98,7 +98,7 @@ sbatch 07_run_pcangsd.sh
 
 #[] 7. Convert the by-chromosome .bcf files to non-binary vcf format
 ## Arguments to alter in this script:
-##      - file_path        : location where the input data is found
+##       - file_path        : location where the input data is found
 ## input  : .bcf files
 ## output : .vcf files
 ## software used : bcftools
