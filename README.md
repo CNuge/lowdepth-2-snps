@@ -30,7 +30,7 @@ This pipeline is meant to facilitate the processing of paired-end illumina low d
 - A text file with the list of the chromosome names you want to call SNPs for
 	- can build this as follows:
 	```
-	cat your_genome_file.fasta | grep ">" >> chr_names.txt
+	cat your_genome_file.fasta | grep ">" | sed 's/>//' > chr_names.txt
 	#then open the file produced and delete lines with chromosomes or scaffolds you don't want SNPs called for.
 	```
 
