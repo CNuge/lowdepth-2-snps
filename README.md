@@ -5,6 +5,7 @@ A bioinformatics pipeline to process low depth re-sequencing data and produce SN
 
 This pipeline is meant to facilitate the processing of paired-end illumina low depth sequencing data for a series of individuals, taking the data from raw fq files all the way to a final set of genotype likelihood files (.beagle) and variant calls (.vcf files)
 
+
 ### Here is a brief summary of the pipeline's steps that accomplish this task:
 1. trim the fq files with cutadapt (makes trimmed .fq files)
 2. align the sequences to a reference genome (make .bam files for each individual)
@@ -14,10 +15,19 @@ This pipeline is meant to facilitate the processing of paired-end illumina low d
 6. call SNPs from the curated alignment data files, gets genotypes and genotype likelihoods (makes a .beagle file and a .bcf file for each chromosome in the genome)
 7. convert the .bcf outputs to .vcf format.
 
+
 ### What you need
 - Paired end sequence files (.fq.gz format, a pair of fq files for each individual)
 - A reference genome in .fasta format (you'll have to specify this file's location)
 - A compute canada account, or other environment that uses a slurm scheduler
+- A text file with the list of the chromosome names you want to call SNPs for
+	- can build this as follows
+	```
+	cat your_genome_file.fasta | grep ">" >> chr_names.txt
+	#then open the file and delete lines with chromosomes or scaffolds you don't want SNPs called for.
+	```
+
+
 
 ## setup and use
 
@@ -36,20 +46,7 @@ This pipeline is meant to facilitate the processing of paired-end illumina low d
 
 
 
-
-
-
-
-## TODO
-[x] bin scripts add
-[x] slurm calls add
-[] change path imports on slurm scripts
-	- try to make things relative, so that the amount of hard coding is minimized
-[] work on checklist
-	- add info on what can be changed, 
-	- add some detail to what each step is doing.
-[] change scripts to save files to logs
-[] document "things you need to provide"
+## document "things you need to provide"
 	- genome file
 	- fq files
 	- a list of chr names

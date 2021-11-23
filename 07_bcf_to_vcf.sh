@@ -13,10 +13,9 @@ module load gcc/9.3.0
 module load bcftools/1.13 
 
 echo "setting params"
-data_path="/scratch/nugentc/data/cunner_reseq/bam_files_nov10_newgenome/cunner_sex_analysis/"
+file_path="./data/"
 
 echo "calling shell script"
-
-bcf_to_vcf_07.sh -f $data_path 
+bcf_to_vcf_07.sh -f $file_path 
 
 echo "bcf to vcf conversion completed!"

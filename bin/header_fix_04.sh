@@ -24,26 +24,18 @@ echo "entering dir"
 #go to the file location
 cd $file_path
 
-#error - its saying there is no read group information on the files, these 
-# were added in step 2, but I think may have been tossed/ignored in step 3
-#appears to be in the file though!
-#x=$file_path"NS.1677.001.UDP0071_i7---UDP0071_i5.RKHM2019_25_.deDup.bam"
-#samtools view -H $x | grep '^@RG'
 
-#if this works, remove the part where the incorrect add is done in script 2
-
-
-#ls *.deDup.bam | sed 's/.deDup.bam//' | \
-#	parallel -j $cores \
-#		java -Xmx10g -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
-#	  	  VALIDATION_STRINGENCY=LENIENT \
-#	      I={}.deDup.bam \
-#	      O={}RG.deDup.bam \
-#	      RGID={} \
-#	      RGLB=AOM_Cunner \
-#	      RGPL=illumina \
-#	      RGPU=$read_group \
-#	      RGSM={}
+ls *.deDup.bam | sed 's/.deDup.bam//' | \
+	parallel -j $cores \
+		java -Xmx10g -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
+	  	  VALIDATION_STRINGENCY=LENIENT \
+	      I={}.deDup.bam \
+	      O={}RG.deDup.bam \
+	      RGID={} \
+	      RGLB=Generic \
+	      RGPL=illumina \
+	      RGPU=$read_group \
+	      RGSM={}
 
 echo "header fix complete"
 
@@ -52,3 +44,5 @@ echo "indexing the bam files"
 ls *RG.deDup.bam | \
 	parallel -j $cores \
 		samtools index {}
+
+echo "indexing complete"

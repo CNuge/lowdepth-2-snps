@@ -12,15 +12,16 @@ export PATH="$PATH:$(pwd)/bin"
 echo "loading necessary modules"
 module load StdEnv/2020  
 module load gcc/9.3.0   
-module load bwa/0.7.17 #found
+module load bwa/0.7.17 
 module load samtools/1.13
 module load picard/2.26.3
 module load bamtools/2.5.1
 
 
-file_path="/scratch/nugentc/data/cunner_reseq/bam_files_nov10_newgenome/"
+file_path="./data/"
+cores=10 #make this equal to the cpus-per-task argument given to sbatch on line 5
 
-bam_dedup_03.sh -f $file_path -c 10
+bam_dedup_03.sh -f $file_path -c $cores 
 
 echo "bam dedup and cleanup script completed!"
 
