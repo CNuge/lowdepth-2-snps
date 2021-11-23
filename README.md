@@ -17,9 +17,14 @@ A bioinformatics pipeline to process low depth re-sequencing data and produce SN
 
 
 
+
+
+
+
+
 ## TODO
-[] bin scripts add
-[] slurm calls add
+[x] bin scripts add
+[x] slurm calls add
 [] change path imports on slurm scripts
 	- try to make things relative, so that the amount of hard coding is minimized
 [] work on checklist

@@ -56,3 +56,6 @@ echo "ANGSD to get the SNP calls and genotype likelihoods"
 echo "these are generated on a per snp basis"
 sbatch scripts/07_run_pcangsd.sh
 
+
+#[] 7. convert the by-chromosome .bcf files to non-binary vcf format
+sbatch 07_bcf_to_vcf.sh
