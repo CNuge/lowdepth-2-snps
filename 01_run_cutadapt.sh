@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --time=3-00:00 # time (DD-HH:MM)
-#SBATCH --job-name=cutadapt_paired_reads
+#SBATCH --time=0-12:00 # time (DD-HH:MM)
+#SBATCH --job-name=b1_cutadapt_paired_reads
 #SBATCH --output=logs/v1_cutadpat_run_%J.out
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=125G
+#SBATCH --cpus-per-task=12
+#SBATCH --mem=100G
 #SBATCH --mail-type=ALL
 
 #add the scripts folder to the search path
