@@ -13,7 +13,7 @@ module load gcc/9.3.0
 module load bcftools/1.13 
 
 echo "setting params"
-file_path="./data/"
+file_path="$(pwd)/data/"
 
 echo "calling shell script"
 bcf_to_vcf_07.sh -f $file_path 

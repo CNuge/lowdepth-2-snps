@@ -28,15 +28,15 @@ cd $file_path
 # looks like tony has a file with the samples stored... I'll keep with his first motif as I like it better
 # this gets the TOcDO list for alignment, finds the first member of the trimmed paired read files, 
 # and builds up 
-trim_files=$(ls *R1_trim.fastq.gz | sed 's/R1_trim.fastq.gz//');
+trim_files=$(ls *R1_trim.fastq.gz | sed 's/_R1_trim.fastq.gz//');
 
 
 for f in $trim_files
 do
 	echo "on file set:"
 	echo $f
-	r1=$f"R1_trim.fastq.gz"; # the R1 read file
-	r2=$f"R2_trim.fastq.gz"; # the R2 read file name
+	r1=$f"_R1_trim.fastq.gz"; # the R1 read file
+	r2=$f"_R2_trim.fastq.gz"; # the R2 read file name
 
 	bam_outfile=$outfolder$f".bam";	 # the name of the .bam output
 	bam_sorted_outfile=$outfolder$f".sorted.bam";	 # the name of the .bam output

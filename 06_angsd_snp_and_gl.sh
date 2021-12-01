@@ -11,7 +11,7 @@ echo "loading the modules"
 module load StdEnv/2020
 module load angsd/0.933
 
-file_path="./data/"
+file_path="$(pwd)/data/"
 
 echo "creating list of bam files to call variants from"
 ls $file_path*".realigned.bam" > "bam_file_list.txt" 

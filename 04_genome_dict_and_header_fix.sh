@@ -9,9 +9,9 @@
 #add the scripts folder to the search path
 export PATH="$PATH:$(pwd)/bin"
 
-file_path="./data/"
+file_path="$(pwd)/data/"
 #your genome file here!
-genome_file="./data/fTauAds1.pri.cur.20211018.fasta"
+genome_file="$(pwd)/data/fTauAds1.pri.cur.20211018.fasta"
 #make this equal to the cpus-per-task argument given to sbatch on line 5
 cores=10
 #the batch id added to the header

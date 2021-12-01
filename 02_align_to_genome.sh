@@ -20,10 +20,10 @@ echo "new genome being used!"
 #your genome file here!
 genome_file="./data/fTauAds1.pri.cur.20211018.fasta"
 #location of the paired end cutadapt outputs, labelled in the format "*R*_trim.fastq.gz"
-file_path="./data/"
+file_path="$(pwd)/data/"
 #location where the alignment outputs should be saved to (in sorted bam format)
 #by default to a subfolder in original data directory with name bamfiles/
-outfolder="./data/"
+outfolder="$(pwd)/data/"
 
 cores=32 #make this equal to the cpus-per-task argument given to sbatch on line 5
 

@@ -17,8 +17,7 @@ module load samtools/1.13
 module load picard/2.26.3
 module load bamtools/2.5.1
 
-
-file_path="./data/"
+file_path="$(pwd)/data/"
 cores=10 #make this equal to the cpus-per-task argument given to sbatch on line 5
 
 bam_dedup_03.sh -f $file_path -c $cores 
